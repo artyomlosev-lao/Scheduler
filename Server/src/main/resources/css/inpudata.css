@@ -1,0 +1,61 @@
+
+
+body{
+    background: url(../image/background.jpg) no-repeat; /* Цвет фона и путь к файлу */
+}
+
+
+input{
+    margin-left: 4px;
+    margin-top: 4px;
+}
+
+button{
+    margin-top: 4px;
+}
+
+h1 { 
+    font-size: 150%; /* Размер текста */ 
+    font-weight: lighter; /* Светлое начертание */ 
+}
+h2 { 
+    font-size: 100%; /* Размер текста */ 
+    font-weight: lighter; /* Светлое начертание */ 
+    
+}
+h3 { 
+    font-family: Arial, Helvetica, Verdana, sans-serif; /* Гарнитура шрифта */ 
+    font-size: 90%; /* Размер текста */ 
+    font-weight: lighter; /* Светлое начертание */ 
+}
+
+
+
+
+#class_list{
+    margin-left: 70px;
+    margin-top: 210px;
+    
+    background: white; /* Цвет фона */
+    border: 3px solid #fff; /* Белая рамка */
+    border-radius: 10px; /* Радиус скругления */
+    display: inline-block;
+}
+
+
+
+
+
+
+.center {
+    width: 200px; /* Ширина элемента в пикселах */
+    padding: 10px; /* Поля вокруг текста */
+    margin: auto; /* Выравниваем по центру */
+    background: #fc0; /* Цвет фона */
+}
+
+.brd {
+    border: 3px solid red; /* Параметры границы */
+    background: rgb(231, 223, 200); /* Цвет фона */
+    padding: 10px; /* Поля вокруг текста */
+   }
