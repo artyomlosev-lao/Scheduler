@@ -22,16 +22,12 @@
   <component name="DBNavigator.Project.DatabaseBrowserManager">
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
-    <show-object-properties value="true" />
-    <loaded-nodes>
-      <connection connection-id="3bf7be00-4b7c-4479-b181-8ca3b8a877a5">
-        <schema name="social_network" object-types="table, view" />
-      </connection>
-    </loaded-nodes>
+    <show-object-properties value="false" />
+    <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="3bf7be00-4b7c-4479-b181-8ca3b8a877a5">
-      <console name="Connection" type="STANDARD" schema="social_network" session="Main"><![CDATA[select * from login;]]></console>
+      <console name="Connection" type="STANDARD" schema="scheduler" session="Main"><![CDATA[select * from schoolclass;]]></console>
     </connection>
     <connection id="5267783f-6896-4138-a6e2-86c934cdd819">
       <console name="Connection 1" type="STANDARD" schema="" session="Main" />
@@ -88,7 +84,7 @@
           <url-type value="DATABASE" />
           <host value="localhost" />
           <port value="3306" />
-          <database value="social_network" />
+          <database value="scheduler" />
           <type value="USER" />
           <user value="root" />
           <deprecated-pwd value="" />

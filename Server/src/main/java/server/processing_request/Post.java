@@ -7,6 +7,7 @@ import server.database.DataManager;
 import server.database.tables.Login;
 import server.database.tables.User;
 
+import javax.xml.crypto.Data;
 import java.io.*;
 import java.net.URL;
 import java.util.Date;
@@ -34,282 +35,352 @@ public class Post {
 // ----------- ЗАПРОСЫ ------------------------
         switch (requested) {
 
-
-
-
-
-
-            case "/inputted": {
-                System.out.println("Начинаем вход!");
-
-                Login login = new Login();
-                String line;
-
-                // Пропускаем ненужную информацию
-                while ((line = in.readLine()) != null && !(line.isEmpty())) {
-                    System.out.println(line);
-                }
-
-
-
-
-
-                // вызывает метод для приема ввода
-                //invokes method to take input
-                new inputdata(in);
-
+            case "/count":{
+                new inputdata("");
                 // вызывает алгоритм
                 //invokes algorithm
                 new SchedulerMain();
-
 
                 // захватываем последнюю хромосому, т.е. вывод
                 //grabs final chromosome i.e. the output
                 Chromosome finalson =SchedulerMain.finalson;
 
-
-                finalson.printTimeTable();
-
-
-
-
-               // login.setLogin(in.readLine());
-                //line = in.readLine();
-
-                System.out.println("Получили следующий класс: " + line);
-
-
-               /* Workbook book = new XSSFWorkbook();
-                Sheet sheet = book.createSheet("Расписание");*/
-
-                //byte[] array = Files.readAllBytes (Paths.get("output.xlsx"));
-
-               // fileData = Files.readAllBytes (Paths.get("output.xlsx"));
-               // fileData = Files.readAllBytes (Paths.get("input.txt"));
-
-                finalson.printTimeTable();
-
-                Exel.writeIntoExcel("output.xls");
-
-
-
-
-
-                try (BufferedInputStream inputStream = new BufferedInputStream(new URL("http://localhost/output.xlsx").openStream());
-                     FileOutputStream fileOutputStream =  new FileOutputStream("output.xlsx")) {
-                    dataOut.write(HelperFunction.readFileData("output.xlsx", ClassLoader.getSystemClassLoader().getClass()));
-                } catch (IOException e) {
-                    //handle exception
-                }
-
-
+//                finalson.printTimeTable();
+                finalson.printTimeTableExel();
                 break;
             }
+            // Добавления
+            case "/addTeacher": {
+                System.out.println("Добавляем учителя");
 
-
-
-
-
-
-
-            case "/register":{
-                System.out.println("Начинаем регистрацию!");
-
-                Login login = new Login();
-                User user = new User();
                 String line;
-
                 // Пропускаем ненужную информацию
                 while ((line = in.readLine()) != null && !(line.isEmpty())) {System.out.println(line);}
-                login.setLogin(in.readLine());
-                login.setPassword(in.readLine());
-                user.setNickname(in.readLine());
 
-                login.setUser(user);
+                DataManager.addTeacher(in.readLine());
 
-                System.out.println("Получили следующий логин: "+login.toString());
+                break;
+            }
+            case "/addSubject": {
+                System.out.println("Добавляем учителя");
 
-                if (isLoginCreated(login)) {
-                    System.out.println("Такой логин уже существует");
-                    fileData = "error".getBytes();
-                } else {
-                    addLogin(login);
-
-                    System.out.println("Логин добавлен");
-                    fileData = (""+DataManager.getIdUserByLoginId(login.getLogin())).getBytes();
-                }
-
-                break;}
-
-            case "/login": {
-                System.out.println("Начинаем вход!");
-
-                Login login = new Login();
                 String line;
-
                 // Пропускаем ненужную информацию
-                while ((line = in.readLine()) != null && !(line.isEmpty())) {
-                    System.out.println(line);
-                }
-                login.setLogin(in.readLine());
-                login.setPassword(in.readLine());
+                while ((line = in.readLine()) != null && !(line.isEmpty())) {System.out.println(line);}
 
-                System.out.println("Получили следующий логин: " + login.toString());
-
-                if (isLoginCorrect(login)) {
-                    System.out.println("Вход разрешен");
-                    fileData = ("" + DataManager.getIdUserByLoginId(login.getLogin())).getBytes();
-
-                } else {
-                    System.out.println("Вход запрещен");
-                    fileData = "error".getBytes();
-                }
+                DataManager.addSubject(in.readLine());
 
                 break;
             }
+            case "/addClass": {
+                System.out.println("Добавляем учителя");
 
-            case "/allUser": {
-                System.out.println("Начинаем поиск всех людей!");
-
-                fileData = DataManager.getAllUser().getBytes();
-
-                break;
-            }
-
-            case "/getUserById": {
-
-                System.out.println("Необходимо получить пользователя по id");
-                String line = null;
+                String line;
                 // Пропускаем ненужную информацию
-                while ((line = in.readLine()) != null && !(line.isEmpty())) {
-                    System.out.println(line);
-                }
-                line = in.readLine();
-                int id_user = Integer.parseInt(line);
-                fileData = DataManager.getUserById(id_user).toString().getBytes();
+                while ((line = in.readLine()) != null && !(line.isEmpty())) {System.out.println(line);}
+
+                DataManager.addGroup(in.readLine());
 
                 break;
             }
 
-            case "/receiveDialog": {
-                System.out.println("Получаем номер диалога");
-                String line = null;
+            case "/addLesson": {
+                System.out.println("Добавляем учителя");
+
+                String line;
                 // Пропускаем ненужную информацию
-                while ((line = in.readLine()) != null && !(line.isEmpty())) {
-                    System.out.println(line);
-                }
-                String num_user1 = in.readLine();
-                String num_user2 = in.readLine();
+                while ((line = in.readLine()) != null && !(line.isEmpty())) {System.out.println(line);}
 
-                fileData = receiveDialog(num_user1, num_user2).getBytes();
+                String name_group = in.readLine();
+                String name_teacher = in.readLine();
+                String name_subject = in.readLine();
+                String hours = in.readLine();
+
+                String id = DataManager.addLesson(name_group, name_subject, name_teacher, hours);
+                fileData = id.getBytes();
                 break;
             }
 
-            case "/getListDialogs": {
-                System.out.println("Получаем список диалогов");
-                String line = null;
+            // Удаления
+            case "/deleteTeacher": {
+                System.out.println("Добавляем учителя");
+
+                String line;
                 // Пропускаем ненужную информацию
-                while ((line = in.readLine()) != null && !(line.isEmpty())) {
-                    System.out.println(line);
-                }
-                String id_user = in.readLine();
+                while ((line = in.readLine()) != null && !(line.isEmpty())) {System.out.println(line);}
 
-                fileData = getListDialogsForAnswer(id_user).getBytes();
+                DataManager.deleteTeacher(in.readLine());
+
                 break;
             }
+            case "/deleteSubject": {
+                System.out.println("Добавляем учителя");
 
-            case "/receiveDialogById": {
-                System.out.println("Получаем диалог по его id");
-
-                String line = null;
+                String line;
                 // Пропускаем ненужную информацию
-                while ((line = in.readLine()) != null && !(line.isEmpty())) {
-                    System.out.println(line);
-                }
-                String id_dialog = in.readLine();
+                while ((line = in.readLine()) != null && !(line.isEmpty())) {System.out.println(line);}
 
-                fileData = getDialogById(id_dialog).getBytes();
+                DataManager.deleteSubject(in.readLine());
 
                 break;
             }
+            case "/deleteClass": {
+                System.out.println("Добавляем учителя");
 
-            case "/getListMessage": {
-                System.out.println("Список сообщений");
-
-                String line = null;
+                String line;
                 // Пропускаем ненужную информацию
-                while ((line = in.readLine()) != null && !(line.isEmpty())) {
-                    System.out.println(line);
-                }
-                String id_dialog = in.readLine();
+                while ((line = in.readLine()) != null && !(line.isEmpty())) {System.out.println(line);}
 
-                fileData = getMessages(id_dialog).getBytes();
+                DataManager.deleteGroup(in.readLine());
+
                 break;
             }
-            case "/addMessage": {
-                System.out.println("Добавляем сообщение");
 
-                String line = null;
+            case "/deleteLesson": {
+                System.out.println("Добавляем учителя");
+
+                String line;
                 // Пропускаем ненужную информацию
-                while ((line = in.readLine()) != null && !(line.isEmpty())) {
-                    System.out.println(line);
-                }
-                String id_dialog = in.readLine();
-                String id_user = in.readLine();
-                String value = in.readLine();
+                while ((line = in.readLine()) != null && !(line.isEmpty())) {System.out.println(line);}
 
-                addMessage(id_dialog, id_user, value);
-                fileData = "сообщение добавлено, скорее всего".getBytes();
+                DataManager.deleteLesson(in.readLine());
+
                 break;
             }
 
-            case "/myFriend": {
-                System.out.println("Получить моих друзей");
+            // Обновление
+            case "/updateLesson": {
+                System.out.println("Добавляем урок");
 
-                String line = null;
+                String line;
                 // Пропускаем ненужную информацию
-                while ((line = in.readLine()) != null && !(line.isEmpty())) {
-                    System.out.println(line);
-                }
-                String id_user = in.readLine();
+                while ((line = in.readLine()) != null && !(line.isEmpty())) {System.out.println(line);}
 
-                fileData = getMyFriend(id_user).getBytes();
+                String id = in.readLine();
+                String name_group = in.readLine();
+                String name_teacher = in.readLine();
+                String name_subject = in.readLine();
+                String hours = in.readLine();
+
+                DataManager.updateLesson(id, name_group, name_subject, name_teacher, hours);
+
                 break;
             }
 
-            case "/addFriend": {
-                System.out.println("Получить моих друзей");
+            case "/load":{
+                String group = DataManager.getAllGroup();
+                String[] arrGroup = group.split("\n");
+                int iter = Integer.parseInt(arrGroup[0]);
 
-                String line = null;
-                // Пропускаем ненужную информацию
-                while ((line = in.readLine()) != null && !(line.isEmpty())) {
-                    System.out.println(line);
-                }
-                String id_user = in.readLine();
-                String id_friend = in.readLine();
-                if(!isFriendCreated(id_user, id_friend)) {
-                    addFriend(id_user, id_friend);
-                    fileData="ok".getBytes();
-                }
-                else{
-                    fileData="error".getBytes();
-                }
-                break;
-            }
-            case "/updateUser": {
-                System.out.println("Обновить человека");
+                String result = DataManager.getAllGroup()+DataManager.getAllTeacher()+DataManager.getAllSubjectr();
 
-                String line = null;
-                // Пропускаем ненужную информацию
-                while ((line = in.readLine()) != null && !(line.isEmpty())) {
-                    System.out.println(line);
+                for(int i = 0; i < iter; i++){
+                    result+=DataManager.getLessonsByGroup(arrGroup[i+1]);
                 }
-                String id_user = in.readLine();
-                String name = in.readLine();
-                updateUser(id_user, name);
-                fileData = "ok".getBytes();
-                break;
+
+                fileData = result.getBytes();
+
             }
+
+
+//            case "/register":{
+//                System.out.println("Начинаем регистрацию!");
+//
+//                Login login = new Login();
+//                User user = new User();
+//                String line;
+//
+//                // Пропускаем ненужную информацию
+//                while ((line = in.readLine()) != null && !(line.isEmpty())) {System.out.println(line);}
+//                login.setLogin(in.readLine());
+//                login.setPassword(in.readLine());
+//                user.setNickname(in.readLine());
+//
+//                login.setUser(user);
+//
+//                System.out.println("Получили следующий логин: "+login.toString());
+//
+//                if (isLoginCreated(login)) {
+//                    System.out.println("Такой логин уже существует");
+//                    fileData = "error".getBytes();
+//                } else {
+//                    addLogin(login);
+//
+//                    System.out.println("Логин добавлен");
+//                    fileData = (""+DataManager.getIdUserByLoginId(login.getLogin())).getBytes();
+//                }
+//
+//                break;}
+//
+//            case "/login": {
+//                System.out.println("Начинаем вход!");
+//
+//                Login login = new Login();
+//                String line;
+//
+//                // Пропускаем ненужную информацию
+//                while ((line = in.readLine()) != null && !(line.isEmpty())) {
+//                    System.out.println(line);
+//                }
+//                login.setLogin(in.readLine());
+//                login.setPassword(in.readLine());
+//
+//                System.out.println("Получили следующий логин: " + login.toString());
+//
+//                if (isLoginCorrect(login)) {
+//                    System.out.println("Вход разрешен");
+//                    fileData = ("" + DataManager.getIdUserByLoginId(login.getLogin())).getBytes();
+//
+//                } else {
+//                    System.out.println("Вход запрещен");
+//                    fileData = "error".getBytes();
+//                }
+//
+//                break;
+//            }
+//
+//            case "/allUser": {
+//                System.out.println("Начинаем поиск всех людей!");
+//
+//                fileData = DataManager.getAllUser().getBytes();
+//
+//                break;
+//            }
+//
+//            case "/getUserById": {
+//
+//                System.out.println("Необходимо получить пользователя по id");
+//                String line = null;
+//                // Пропускаем ненужную информацию
+//                while ((line = in.readLine()) != null && !(line.isEmpty())) {
+//                    System.out.println(line);
+//                }
+//                line = in.readLine();
+//                int id_user = Integer.parseInt(line);
+//                fileData = DataManager.getUserById(id_user).toString().getBytes();
+//
+//                break;
+//            }
+//
+//            case "/receiveDialog": {
+//                System.out.println("Получаем номер диалога");
+//                String line = null;
+//                // Пропускаем ненужную информацию
+//                while ((line = in.readLine()) != null && !(line.isEmpty())) {
+//                    System.out.println(line);
+//                }
+//                String num_user1 = in.readLine();
+//                String num_user2 = in.readLine();
+//
+//                fileData = receiveDialog(num_user1, num_user2).getBytes();
+//                break;
+//            }
+//
+//            case "/getListDialogs": {
+//                System.out.println("Получаем список диалогов");
+//                String line = null;
+//                // Пропускаем ненужную информацию
+//                while ((line = in.readLine()) != null && !(line.isEmpty())) {
+//                    System.out.println(line);
+//                }
+//                String id_user = in.readLine();
+//
+//                fileData = getListDialogsForAnswer(id_user).getBytes();
+//                break;
+//            }
+//
+//            case "/receiveDialogById": {
+//                System.out.println("Получаем диалог по его id");
+//
+//                String line = null;
+//                // Пропускаем ненужную информацию
+//                while ((line = in.readLine()) != null && !(line.isEmpty())) {
+//                    System.out.println(line);
+//                }
+//                String id_dialog = in.readLine();
+//
+//                fileData = getDialogById(id_dialog).getBytes();
+//
+//                break;
+//            }
+//
+//            case "/getListMessage": {
+//                System.out.println("Список сообщений");
+//
+//                String line = null;
+//                // Пропускаем ненужную информацию
+//                while ((line = in.readLine()) != null && !(line.isEmpty())) {
+//                    System.out.println(line);
+//                }
+//                String id_dialog = in.readLine();
+//
+//                fileData = getMessages(id_dialog).getBytes();
+//                break;
+//            }
+//            case "/addMessage": {
+//                System.out.println("Добавляем сообщение");
+//
+//                String line = null;
+//                // Пропускаем ненужную информацию
+//                while ((line = in.readLine()) != null && !(line.isEmpty())) {
+//                    System.out.println(line);
+//                }
+//                String id_dialog = in.readLine();
+//                String id_user = in.readLine();
+//                String value = in.readLine();
+//
+//                addMessage(id_dialog, id_user, value);
+//                fileData = "сообщение добавлено, скорее всего".getBytes();
+//                break;
+//            }
+//
+//            case "/myFriend": {
+//                System.out.println("Получить моих друзей");
+//
+//                String line = null;
+//                // Пропускаем ненужную информацию
+//                while ((line = in.readLine()) != null && !(line.isEmpty())) {
+//                    System.out.println(line);
+//                }
+//                String id_user = in.readLine();
+//
+//                fileData = getMyFriend(id_user).getBytes();
+//                break;
+//            }
+//
+//            case "/addFriend": {
+//                System.out.println("Получить моих друзей");
+//
+//                String line = null;
+//                // Пропускаем ненужную информацию
+//                while ((line = in.readLine()) != null && !(line.isEmpty())) {
+//                    System.out.println(line);
+//                }
+//                String id_user = in.readLine();
+//                String id_friend = in.readLine();
+//                if(!isFriendCreated(id_user, id_friend)) {
+//                    addFriend(id_user, id_friend);
+//                    fileData="ok".getBytes();
+//                }
+//                else{
+//                    fileData="error".getBytes();
+//                }
+//                break;
+//            }
+//            case "/updateUser": {
+//                System.out.println("Обновить человека");
+//
+//                String line = null;
+//                // Пропускаем ненужную информацию
+//                while ((line = in.readLine()) != null && !(line.isEmpty())) {
+//                    System.out.println(line);
+//                }
+//                String id_user = in.readLine();
+//                String name = in.readLine();
+//                updateUser(id_user, name);
+//                fileData = "ok".getBytes();
+//                break;
+//            }
         }
         // Шлем HTTP Headers
         out.println("HTTP/1.1 200 OK");

@@ -9,7 +9,7 @@ import static server.processing_request.HelperFunction.*;
 public class Get {
 
 
-    private static final String DEFAULT_FILE = "inputdata.html";
+    private static final String DEFAULT_FILE = "admin.html";
 
     /**Принимает запрос, обрабатывает и отправляет на сервер
      * @param requested - строка с названием запроса

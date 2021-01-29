@@ -1,33 +1,64 @@
 package server.testing;
 
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import server.database.BDConfiguration;
+import server.database.BDManager;
 import server.database.DataManager;
-import server.database.tables.Dialogs;
-import server.database.tables.Friends;
-import server.database.tables.Login;
-import server.database.tables.User;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import server.database.tables.Lesson;
+import server.database.tables.SchoolClass;
+import server.database.tables.Subject;
+import server.database.tables.Teacher;
 
 public class TestBD {
     public static void main(String[] args) {
-        String id_user1 = "16";
-        String id_user2 = "1";
+        Teacher[] teachers = {  new Teacher("Василий Петрович"),
+                                new Teacher("Марина Генадьевна"),
+                                new Teacher("Петр Иванович")
+        };
 
-        if(!DataManager.isFriendCreated(id_user1, id_user2)){
-            System.out.println("Они еще не друзья, создаем связь");
-            DataManager.addFriend(id_user1, id_user2);
-            if(DataManager.isFriendCreated(id_user1, id_user2)) System.out.println("Они подружились");
-        }
-        else{
-            System.out.println("Они уже дружат");
+        SchoolClass[] schoolClasses = {  new SchoolClass("5А"),
+                            new SchoolClass("7Б"),
+                            new SchoolClass("10В")
+        };
+
+        Subject[] subjects = {  new Subject("Биология"),
+                                new Subject("Математика"),
+                                new Subject("Физика")
+        };
+
+        for(int i=0; i<3; i++){
+            DataManager.addGroup(schoolClasses[i].getName_group());
+            DataManager.addSubject(subjects[i].getName_subject());
+            DataManager.addTeacher(teachers[i].getName());
         }
 
-        System.out.println(DataManager.getMyFriend(id_user1));
+        System.out.println("Выводим группы:\n"+DataManager.getAllGroup());
+        System.out.println("Выводим учителей:\n"+DataManager.getAllTeacher());
+        System.out.println("Выводим предметы:\n"+DataManager.getAllSubjectr());
+
+
+        DataManager.deleteGroup(schoolClasses[2].getName_group());
+        DataManager.deleteSubject(subjects[2].getName_subject());
+        DataManager.deleteTeacher(teachers[2].getName());
+
+        System.out.println("Выводим группы:\n"+DataManager.getAllGroup());
+        System.out.println("Выводим учителей:\n"+DataManager.getAllTeacher());
+        System.out.println("Выводим предметы:\n"+DataManager.getAllSubjectr());
+
+        for(int i=0; i<8; i++){
+            DataManager.addLesson(schoolClasses[i/4].getName_group(),subjects[i%2].getName_subject(), teachers[i&1].getName(), 3+"");
+        }
+
+        System.out.println("Выводим все уроки\n"+DataManager.getAllLessons());
+        for(int i=0; i<2; i++){
+            System.out.println("******************************");
+            System.out.println("Выводим по уроки по группе\n"+DataManager.getLessonsByGroup(schoolClasses[i].getName_group()));
+            System.out.println("Выводим по уроки по Учителю\n"+DataManager.getLessonsByTeacher(teachers[i].getName()));
+            System.out.println("Выводим по уроки по предмету\n"+DataManager.getLessonsBySubject(subjects[i].getName_subject()));
+        }
+
+        System.out.println("--------- Удаляем учителя --------------");
+        DataManager.deleteTeacher(teachers[1].getName());
+        DataManager.updateLesson("65", "7Б", "Математика", "Василий Петрович", "6");
+        System.out.println("Выводим все уроки\n"+DataManager.getAllLessons());
     }
 
 }

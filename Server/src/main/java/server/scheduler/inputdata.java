@@ -1,5 +1,7 @@
 package server.scheduler;
 
+import server.database.DataManager;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -143,22 +145,59 @@ public class inputdata {
 
 
 
-	public inputdata(BufferedReader answer) throws IOException {
+//	public inputdata(BufferedReader answer) throws IOException {
+//
+//		hoursperday = 5;
+//		daysperweek = 3;
+//
+//
+//
+//		String line = answer.readLine();
+//
+//		int numberStudents = Integer.parseInt(line);
+//
+//		studentgroup = new StudentGroup[numberStudents];
+//
+//		for (int i = 0; i < numberStudents; i++){
+//			String name = answer.readLine();
+//			int numberSubjects = Integer.parseInt(answer.readLine());
+//
+//			studentgroup[i] = new StudentGroup(numberSubjects);
+//			studentgroup[i].id = i;
+//			studentgroup[i].name = name;
+//			studentgroup[i].nosubject = 0;
+//
+//			for (int j = 0; j < numberSubjects; j++){
+//				studentgroup[i].subject[j] = answer.readLine();
+//				System.out.println(studentgroup[i].subject[j]);
+//				studentgroup[i].teacherid[j]= answer.readLine();
+//				System.out.println(studentgroup[i].teacherid[j]);
+//				studentgroup[i].hours[j] = Integer.parseInt(answer.readLine());
+//				studentgroup[i].nosubject++;
+//			}
+//		}
+//
+//		nostudentgroup = numberStudents;
+//
+//	}
 
-		hoursperday = 5;
-		daysperweek = 3;
+	public inputdata(String what) throws IOException {
 
+		hoursperday = 6;
+		daysperweek = 4;
 
+		String allGroups = DataManager.getAllGroup();
+		String[] arrGroups = allGroups.split("\n");
 
-		String line = answer.readLine();
-
-		int numberStudents = Integer.parseInt(line);
+		int numberStudents = Integer.parseInt(arrGroups[0]);
 
 		studentgroup = new StudentGroup[numberStudents];
 
 		for (int i = 0; i < numberStudents; i++){
-			String name = answer.readLine();
-			int numberSubjects = Integer.parseInt(answer.readLine());
+			String name = arrGroups[i+1];
+			String[] les = DataManager.getLessonsByGroupSched(name).split("\n");
+
+			int numberSubjects = Integer.parseInt(les[0]);
 
 			studentgroup[i] = new StudentGroup(numberSubjects);
 			studentgroup[i].id = i;
@@ -166,11 +205,11 @@ public class inputdata {
 			studentgroup[i].nosubject = 0;
 
 			for (int j = 0; j < numberSubjects; j++){
-				studentgroup[i].subject[j] = answer.readLine();
+				studentgroup[i].subject[j] = les[j*3+1];
 				System.out.println(studentgroup[i].subject[j]);
-				studentgroup[i].teacherid[j]= answer.readLine();
+				studentgroup[i].teacherid[j]= les[j*3+2];
 				System.out.println(studentgroup[i].teacherid[j]);
-				studentgroup[i].hours[j] = Integer.parseInt(answer.readLine());
+				studentgroup[i].hours[j] = Integer.parseInt(les[j*3+3]);
 				studentgroup[i].nosubject++;
 			}
 		}
@@ -178,8 +217,6 @@ public class inputdata {
 		nostudentgroup = numberStudents;
 
 	}
-
-
 
 
 }

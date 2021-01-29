@@ -1,0 +1,142 @@
+<html lang="en">
+	<link rel="stylesheet" type="text/css" href="../css/admin.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+	<script src="../js/admin.js" defer></script>
+	
+	<head>
+		<title>Задание</title>
+		<meta charset="UTF-8">
+
+		<!--link rel="stylesheet" type="text/css" href="menu.css"-->
+	</head>
+	<body>
+		<div>
+			<table rules="all" frame="border" id="class">
+				<tbody>
+					<tr>
+						<th>Класс</th><th></th>
+					</tr>
+				</tbody>
+			</table>
+			<button id="beforeAddClass">Добавить</button>
+		</div>
+		
+		<div>
+			<table rules="all" frame="border" id="teacher">
+				<tbody>
+					<tr>
+						<th>Учитель</th><th></th>
+					</tr>
+				</tbody>
+			</table>
+			<button id="beforeAddTeacher">Добавить</button>
+		</div>
+		
+		<div>
+			<table rules="all" frame="border" id="subject">
+				<tbody>
+					<tr>
+						<th>Предмет</th><th></th>
+					</tr>
+				</tbody>
+			</table>
+			<button id="beforeAddSubject">Добавить</button>
+		</div>
+		
+		<div id="lessonBlock">
+			<table rules="all" frame="border" id="lesson">
+				<tbody>
+				<tr>
+					<th>Учитель</th><th>Предмет</th><th>Часы</th><th></th>
+				</tr>
+				</tbody>
+			</table>
+			<button id="beforeAddLesson">Добавить</button>
+		</div>
+		
+		
+		<!-- Popup teacher -->
+		<div class="b-popup" id="popupTeacher">
+			<div class="b-popup-content">
+				<form>
+					<p>Введите ФИО учителя: <input id="inputTeacher" type="text" required></input> <span></span></p>
+				</form>
+				<div>
+					<button id="addTeacher">Добавить</button>
+					<button id="exitTeacher">Отменить</button>
+				</div>
+			</div>
+		</div> 
+		
+		<!-- Popup class -->
+		<div class="b-popup" id="popupClass">
+			<div class="b-popup-content">
+				<form>
+					<p>Введите название класса: <input id="inputClass" type="text" required></input> <span></span></p>
+				</form>
+				<div>
+					<button id="addClass">Добавить</button>
+					<button id="exitClass">Отменить</button>
+				</div>
+			</div>
+		</div> 
+		
+		<!-- Popup subject -->
+		<div class="b-popup" id="popupSubject">
+			<div class="b-popup-content">
+				<form>
+					<p>Введите название предмета: <input id="inputSubject" type="text" required></input> <span></span></p>
+				</form>
+				<div>
+					<button id="addSubject">Добавить</button>
+					<button id="exitSubject">Отменить</button>
+				</div>
+			</div>
+		</div> 
+		
+		
+		<!-- Popup lesson -->
+		<div class="b-popup" id="popupLesson">
+			<div class="b-popup-content">
+				<form>
+				
+					<select id="choiceTeacher">
+						<option disabled>Выберите учителя</option>
+					</select>
+					
+					<select id="choiceSubject">
+						<option disabled>Выберите предмет</option>
+					</select>
+					<input id="inputHour" type="number" min="1">
+				</form>
+				<div>
+					<button id="addLesson">Добавить</button>
+					<button id="exitLesson">Отменить</button>
+				</div>
+			</div>
+		</div> 
+		
+		<!-- Popup lesson -->
+		<div class="b-popup" id="popupLessonEdit">
+			<div class="b-popup-content">
+				<form>
+				
+					<select id="editTeacher">
+						<option disabled>Выберите учителя</option>
+					</select>
+					
+					<select id="editSubject">
+						<option disabled>Выберите предмет</option>
+					</select>
+					<input id="editHour" type="number" min="1">
+				</form>
+				<div>
+					<button id="editLesson">Добавить</button>
+					<button id="exitLessonEdit">Отменить</button>
+				</div>
+			</div>
+		</div> 
+		
+		<button id="count">Расчитать расписание</button>
+		
+	<body>

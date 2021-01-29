@@ -2,13 +2,188 @@ package server.database;
 
 import server.database.tables.*;
 
-import java.util.ArrayList;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.Serializable;
 import java.util.List;
 
 public class DataManager {
 
-    // -------- Проверки --------------------
+    // Добавление записей в БД
 
+   public static void addTeacher(String name){
+       BDManager bd = BDManager.getInstance();
+       Teacher teacher = new Teacher(name);
+       bd.addTeacher(teacher);
+   }
+
+   public static void addSubject(String name_subject){
+       BDManager bd = BDManager.getInstance();
+       Subject subject = new Subject(name_subject);
+       bd.addSubject(subject);
+   }
+
+   public static void addGroup(String name_group){
+       BDManager bd = BDManager.getInstance();
+       SchoolClass schoolClass = new SchoolClass(name_group);
+       bd.addGroup(schoolClass);
+   }
+
+   public static String addLesson(String name_group, String name_subject, String name_teacher, String hours){
+       BDManager bd = BDManager.getInstance();
+       int hour = Integer.parseInt(hours);
+       Lesson lesson = new Lesson(
+                                    new SchoolClass(name_group),
+                                    new Subject(name_subject),
+                                    new Teacher(name_teacher),
+                                    hour
+       );
+       Serializable id = bd.addLesson(lesson);
+       return id.toString();
+   }
+
+    public static void updateLesson(String id, String name_group, String name_subject, String name_teacher, String hours){
+        BDManager bd = BDManager.getInstance();
+        int hour = Integer.parseInt(hours);
+        int id_les = Integer.parseInt(id);
+
+        Lesson lesson = new Lesson(
+                id_les,
+                new SchoolClass(name_group),
+                new Subject(name_subject),
+                new Teacher(name_teacher),
+                hour
+        );
+
+        bd.updateLesson(lesson);
+    }
+
+   // Удаление записей из БД
+   public static void deleteTeacher(String name_teacher){
+       BDManager bd = BDManager.getInstance();
+       Teacher teacher = new Teacher(name_teacher);
+       bd.deleteTeacher(teacher);
+   }
+
+    public static void deleteSubject(String name_subject){
+        BDManager bd = BDManager.getInstance();
+        Subject subject = new Subject(name_subject);
+        bd.deleteSubject(subject);
+    }
+
+    public static void deleteGroup(String name_group){
+        BDManager bd = BDManager.getInstance();
+        SchoolClass schoolClass = new SchoolClass(name_group);
+        bd.deleteGroup(schoolClass);
+    }
+
+    public static void deleteLesson(String id){
+       BDManager bd = BDManager.getInstance();
+       Lesson lesson = new Lesson();
+       lesson.setId(Integer.parseInt(id));
+       bd.deleteLesson(lesson);
+    }
+
+
+    // Получить какую-то инфу из БД
+
+    public static String getAllGroup(){
+       String result = "";
+
+       BDManager bd = BDManager.getInstance();
+       List<SchoolClass> schoolClasses = bd.getAllGroup();
+       result += schoolClasses.size()+"\n";
+       for(SchoolClass schoolClass : schoolClasses){
+           result += schoolClass.toString()+"\n";
+       }
+       return result;
+    }
+
+    public static String getAllTeacher(){
+        String result = "";
+
+        BDManager bd = BDManager.getInstance();
+        List<Teacher> teachers = bd.getAllTeacher();
+        result += teachers.size()+"\n";
+        for(Teacher teacher: teachers){
+            result += teacher.toString()+"\n";
+        }
+        return result;
+    }
+
+    public static String getAllSubjectr(){
+        String result = "";
+
+        BDManager bd = BDManager.getInstance();
+        List<Subject> subjects = bd.getAllSubject();
+        result += subjects.size()+"\n";
+        for(Subject subject: subjects){
+            result += subject.toString()+"\n";
+        }
+        return result;
+    }
+
+    public static String getAllLessons(){
+       String result = "";
+
+       BDManager bd = BDManager.getInstance();
+       List<Lesson> lessons = bd.getAllLesson();
+       result += lessons.size()+"\n";
+       for(Lesson lesson: lessons){
+           result += lesson.toString()+"\n";
+       }
+       return result;
+    }
+
+    public static String getLessonsByGroup(String name_group){
+       String result = "";
+
+       BDManager bd = BDManager.getInstance();
+       List<Lesson> lessons = bd.getLessonsByGroup(name_group);
+       result += lessons.size()+"\n";
+       for(Lesson lesson: lessons){
+           result += lesson.toString()+"\n";
+       }
+       return result;
+    }
+
+    public static String getLessonsByGroupSched(String name_group){
+       String result = "";
+
+       BDManager bd = BDManager.getInstance();
+       List<Lesson> lessons = bd.getLessonsByGroup(name_group);
+       result += lessons.size()+"\n";
+       for(Lesson lesson: lessons){
+           result += lesson.stringForScheduler()+"\n";
+       }
+       return result;
+    }
+
+    public static String getLessonsByTeacher(String name_teacher){
+       String result = "";
+
+       BDManager bd = BDManager.getInstance();
+       List<Lesson> lessons = bd.getLessonsByTeacher(name_teacher);
+        result += lessons.size()+"\n";
+        for(Lesson lesson: lessons){
+            result += lesson.toString()+"\n";
+        }
+        return result;
+    }
+
+    public static String getLessonsBySubject(String name_subject){
+       String result = "";
+
+       BDManager bd = BDManager.getInstance();
+       List<Lesson> lessons = bd.getLessonsBySubject(name_subject);
+       result += lessons.size()+"\n";
+       for(Lesson lesson: lessons){
+           result += lesson.toString()+"\n";
+       }
+       return result;
+    }
+   /*
     public static boolean isLoginCreated(Login login){
         BDManager bd = BDManager.getInstance();
         return bd.isLogin(login) != 0;
@@ -202,4 +377,5 @@ public class DataManager {
         user.setNickname(name);
         bd.updateUser(user);
     }
+    */
 }
