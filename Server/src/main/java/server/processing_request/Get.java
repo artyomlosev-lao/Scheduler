@@ -9,7 +9,7 @@ import static server.processing_request.HelperFunction.*;
 public class Get {
 
 
-    private static final String DEFAULT_FILE = "admin.html";
+    private static final String DEFAULT_FILE = "centerpage.html";
 
     /**Принимает запрос, обрабатывает и отправляет на сервер
      * @param requested - строка с названием запроса
@@ -26,8 +26,14 @@ public class Get {
 
         byte[] fileData = null;
 
+
         try {
-            fileData = readFileData(getDirectory(requested) + requested, myClass);
+            if(requested.equals("/temp.xlsx")){
+                fileData = readFileData("/temp.xlsx", myClass);
+            }
+            else {
+                fileData = readFileData(getDirectory(requested) + requested, myClass);
+            }
         } catch (FileNotFoundException e) {
             requested = "/" + DEFAULT_FILE;
             fileData = readFileData(getDirectory(requested) + requested, myClass);

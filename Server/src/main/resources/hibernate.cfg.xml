@@ -19,6 +19,7 @@
         <mapping class="server.database.tables.Teacher"/>
         <mapping class="server.database.tables.Subject"/>
         <mapping class="server.database.tables.Lesson"/>
+        <mapping class="server.database.tables.Login"/>
 
     </session-factory>
 </hibernate-configuration>

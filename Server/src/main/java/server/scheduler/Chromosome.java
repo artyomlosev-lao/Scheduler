@@ -159,7 +159,7 @@ public class Chromosome implements Comparable<Chromosome>,Serializable{
 
 		XSSFFont font = ((XSSFWorkbook) workbook).createFont();
 		font.setFontName("Arial");
-		font.setFontHeightInPoints((short) 16);
+		font.setFontHeightInPoints((short) 12);
 		font.setBold(true);
 		headerStyle.setFont(font);
 
@@ -189,7 +189,8 @@ public class Chromosome implements Comparable<Chromosome>,Serializable{
 					Row nameClasses = sheet.createRow(indexRow);
 					indexRow++;
 
-					Cell nameClass = nameClasses.createCell(0);
+					nameClasses.createCell(0).setCellValue("Класс");
+					Cell nameClass = nameClasses.createCell(1);
 					nameClass.setCellValue(TimeTable.slot[gene[i].slotno[l]].studentgroup.name);
 					//System.out.println("Batch "+TimeTable.slot[gene[i].slotno[l]].studentgroup.name+" Timetable-");
 
@@ -205,15 +206,15 @@ public class Chromosome implements Comparable<Chromosome>,Serializable{
 			for(int j=0;j<days;j++){
 				Row day = sheet.createRow(indexRow);
 				indexRow++;
-
+				day.createCell(0).setCellValue("День "+ (j+1));
 				// цикл на каждый час дня
 				//looping for each hour of the day
 				for(int k=0;k<hours;k++){
-					Cell lesson = day.createCell(k);
+					Cell lesson = day.createCell(k+1);
 					// проверяем, свободен ли этот слот, иначе выводим его
 					//checking if this slot is free otherwise printing it
 					if(TimeTable.slot[gene[i].slotno[k+j*hours]]!=null) {
-						lesson.setCellValue(TimeTable.slot[gene[i].slotno[k + j * hours]].subject + " "+TimeTable.slot[gene[i].slotno[k + j * hours]].teacherid + " ");
+						lesson.setCellValue(TimeTable.slot[gene[i].slotno[k + j * hours]].subject + " ("+TimeTable.slot[gene[i].slotno[k + j * hours]].teacherid + ") ");
 						//System.out.print(TimeTable.slot[gene[i].slotno[k + j * hours]].subject + " ");
 						//System.out.print(TimeTable.slot[gene[i].slotno[k + j * hours]].teacherid + " ");
 					}
@@ -226,14 +227,14 @@ public class Chromosome implements Comparable<Chromosome>,Serializable{
 
 				//System.out.println("");
 			}
-
+			indexRow++;
 			//System.out.println("\n\n\n");
 
 		}
 
 		File currDir = new File(".");
 		String path = currDir.getAbsolutePath();
-		String fileLocation = path.substring(0, path.length() - 1) + "temp.xlsx";
+		String fileLocation = path.substring(0, path.length() - 1) + "Server\\src\\main\\resources\\temp.xlsx";
 
 		FileOutputStream outputStream = null;
 		try {

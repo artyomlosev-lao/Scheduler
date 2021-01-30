@@ -5,54 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="55705cdf-839f-47e5-b626-8151f1ebf96c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/Scheduler.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/src/main/java/server/database/tables/Lesson.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/src/main/java/server/database/tables/SchoolClass.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/src/main/java/server/database/tables/Subject.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/src/main/java/server/database/tables/Teacher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/src/main/java/server/testing/TestInput.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/src/main/resources/html/admin.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Server/src/main/resources/html/centerpage.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Server/src/main/resources/js/centerpage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Server/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/main/java/server/database/BDManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/server/database/BDManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/main/java/server/database/DataManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/server/database/DataManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/server/database/tables/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/server/database/tables/Login.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/main/java/server/processing_request/Get.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/server/processing_request/Get.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/main/java/server/processing_request/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/server/processing_request/Post.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/main/java/server/scheduler/Chromosome.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/server/scheduler/Chromosome.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/java/server/scheduler/inputdata.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/server/scheduler/inputdata.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/java/server/testing/TestBD.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/server/testing/TestBD.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/server/testing/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/server/testing/Test.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/main/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/resources/hibernate.cfg.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/resources/html/admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/resources/html/admin.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/target/classes/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Server/target/classes/hibernate.cfg.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/target/classes/server/HttpServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/Server/target/classes/server/HttpServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/target/classes/server/database/BDConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/Server/target/classes/server/database/BDConfiguration.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/target/classes/server/database/BDManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/Server/target/classes/server/database/BDManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/target/classes/server/database/DataManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/Server/target/classes/server/database/DataManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/target/classes/server/database/tables/Dialogs.class" beforeDir="false" afterPath="$PROJECT_DIR$/Server/target/classes/server/database/tables/Dialogs.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/target/classes/server/database/tables/Friends.class" beforeDir="false" afterPath="$PROJECT_DIR$/Server/target/classes/server/database/tables/Friends.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/target/classes/server/database/tables/Login.class" beforeDir="false" afterPath="$PROJECT_DIR$/Server/target/classes/server/database/tables/Login.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/target/classes/server/database/tables/Message.class" beforeDir="false" afterPath="$PROJECT_DIR$/Server/target/classes/server/database/tables/Message.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/target/classes/server/database/tables/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/Server/target/classes/server/database/tables/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/target/classes/server/outputdata/Exel.class" beforeDir="false" afterPath="$PROJECT_DIR$/Server/target/classes/server/outputdata/Exel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/target/classes/server/outputdata/outputdata.class" beforeDir="false" afterPath="$PROJECT_DIR$/Server/target/classes/server/outputdata/outputdata.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/target/classes/server/processing_request/ClientHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/Server/target/classes/server/processing_request/ClientHandler.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/target/classes/server/processing_request/Get.class" beforeDir="false" afterPath="$PROJECT_DIR$/Server/target/classes/server/processing_request/Get.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/target/classes/server/processing_request/HelperFunction.class" beforeDir="false" afterPath="$PROJECT_DIR$/Server/target/classes/server/processing_request/HelperFunction.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/target/classes/server/processing_request/Post.class" beforeDir="false" afterPath="$PROJECT_DIR$/Server/target/classes/server/processing_request/Post.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/target/classes/server/scheduler/Chromosome.class" beforeDir="false" afterPath="$PROJECT_DIR$/Server/target/classes/server/scheduler/Chromosome.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/target/classes/server/scheduler/Gene.class" beforeDir="false" afterPath="$PROJECT_DIR$/Server/target/classes/server/scheduler/Gene.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/target/classes/server/scheduler/SchedulerMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/Server/target/classes/server/scheduler/SchedulerMain.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/target/classes/server/scheduler/Slot.class" beforeDir="false" afterPath="$PROJECT_DIR$/Server/target/classes/server/scheduler/Slot.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/target/classes/server/scheduler/StudentGroup.class" beforeDir="false" afterPath="$PROJECT_DIR$/Server/target/classes/server/scheduler/StudentGroup.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/target/classes/server/scheduler/Subject.class" beforeDir="false" afterPath="$PROJECT_DIR$/Server/target/classes/server/scheduler/Subject.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/target/classes/server/scheduler/Teacher.class" beforeDir="false" afterPath="$PROJECT_DIR$/Server/target/classes/server/scheduler/Teacher.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/target/classes/server/scheduler/TimeTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/Server/target/classes/server/scheduler/TimeTable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/target/classes/server/scheduler/Utility.class" beforeDir="false" afterPath="$PROJECT_DIR$/Server/target/classes/server/scheduler/Utility.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/target/classes/server/scheduler/inputdata.class" beforeDir="false" afterPath="$PROJECT_DIR$/Server/target/classes/server/scheduler/inputdata.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/target/classes/server/testing/DBConf.class" beforeDir="false" afterPath="$PROJECT_DIR$/Server/target/classes/server/testing/DBConf.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/target/classes/server/testing/Manager.class" beforeDir="false" afterPath="$PROJECT_DIR$/Server/target/classes/server/testing/Manager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/target/classes/server/testing/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/Server/target/classes/server/testing/Test.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/target/classes/server/testing/TestBD.class" beforeDir="false" afterPath="$PROJECT_DIR$/Server/target/classes/server/testing/TestBD.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/server/testing/Manager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/target/classes/server/testing/Test.class" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -197,6 +171,14 @@
       <option name="presentableId" value="Default" />
       <updated>1608143826760</updated>
     </task>
+    <task id="LOCAL-00001" summary="#1&#10;Pochty sdelal">
+      <created>1611955430729</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1611955430729</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -211,5 +193,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="#1&#10;Pochty sdelal" />
+    <option name="LAST_COMMIT_MESSAGE" value="#1&#10;Pochty sdelal" />
   </component>
 </project>

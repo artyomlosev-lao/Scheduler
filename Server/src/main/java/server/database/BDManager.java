@@ -231,6 +231,26 @@ public class BDManager {
         TypedQuery<SchoolClass> allQuery = BDConfiguration.getInstance().getSession().createQuery(all);
         return allQuery.getResultList();
     }
+
+    public int isLogin(Login login){
+        Login log = null;
+        try {
+            Session session = BDConfiguration.getInstance().getSession();
+            session.beginTransaction();
+            log = session.get(Login.class, login.getLogin());
+            session.getTransaction().commit();
+            session.close();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        }
+        if(log == null){
+            return 0;
+        }
+        else if(log.getPassword().equals(login.getPassword())){
+            return 1;
+        }
+        else return -1;
+    }
     /*
     public void addLogin(Login login){
         try {

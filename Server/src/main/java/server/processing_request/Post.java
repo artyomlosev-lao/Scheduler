@@ -35,6 +35,18 @@ public class Post {
 // ----------- ЗАПРОСЫ ------------------------
         switch (requested) {
 
+            case "/login":{
+                String line;
+                // Пропускаем ненужную информацию
+                while ((line = in.readLine()) != null && !(line.isEmpty())) {System.out.println(line);}
+                String login = in.readLine();
+                String password = in.readLine();
+                if(DataManager.isLoginCorrect(login, password)){
+                    fileData = "LoginTrue".getBytes();
+                }
+                else fileData = "Что-то было неверно введено!".getBytes();
+                break;
+            }
             case "/count":{
                 new inputdata("");
                 // вызывает алгоритм
@@ -47,6 +59,14 @@ public class Post {
 
 //                finalson.printTimeTable();
                 finalson.printTimeTableExel();
+
+                try (BufferedInputStream inputStream = new BufferedInputStream(new URL("http://localhost/output.xlsx").openStream());
+                     FileOutputStream fileOutputStream =  new FileOutputStream("output.xlsx")) {
+                    dataOut.write(HelperFunction.readFileData("output.xlsx", ClassLoader.getSystemClassLoader().getClass()));
+                } catch (IOException e) {
+                    //handle exception
+                }
+
                 break;
             }
             // Добавления

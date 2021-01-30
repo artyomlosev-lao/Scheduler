@@ -5,6 +5,12 @@ import javax.persistence.*;
 @Entity
 @Table(name="Login")
 public class Login {
+    public Login(){};
+    public Login(String login, String password){
+        this.login = login;
+        this.password = password;
+    }
+
     @Id
     private String login;
 
@@ -16,24 +22,6 @@ public class Login {
 
     public String getPassword() { return password;}
     public void setPassword(String password) { this.password = password;}
-
-    @OneToOne (optional = false, cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_user")
-    private User user = null;
-
-    public User getUser() { return user;}
-    public void setUser(User user) { this.user = user;}
-
-    public Login(){}
-    public Login(String login, String password){
-        this.login = login;
-        this.password = password;
-    }
-    public Login(String login, String password, User user){
-        this.login = login;
-        this.password = password;
-        this.user = user;
-    }
 
     @Override
     public String toString() {

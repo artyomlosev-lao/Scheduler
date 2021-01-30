@@ -183,6 +183,12 @@ public class DataManager {
        }
        return result;
     }
+
+    public static boolean isLoginCorrect(String login, String password){
+        BDManager bd = BDManager.getInstance();
+        Login loginObj = new Login(login, password);
+        return bd.isLogin(loginObj) == 1;
+    }
    /*
     public static boolean isLoginCreated(Login login){
         BDManager bd = BDManager.getInstance();
